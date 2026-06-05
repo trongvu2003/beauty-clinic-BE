@@ -76,7 +76,8 @@ const API = "/api";
 app.get(`${API}/health`, (_req, res) =>
   res.json({ status: "ok", timestamp: new Date().toISOString() })
 );
-
+const newsRoute = require("./routes/news.route");
+app.use(`${API}/news`, newsRoute);
 app.use(`${API}/products`, createProductRouter(productCtrl));
 app.use(`${API}/blogs`, createBlogRouter(blogCtrl));
 app.use(`${API}/categories`, createCategoryRouter(categoryCtrl));
